@@ -301,9 +301,6 @@ if __name__ == "__main__":
 	count=0
 	print "(Domain, Score)"
 	f.write("Domain, Score"+"\n")
-	for item in unfiltered_scoring_vector:
-		domain = item[0]
-		score= item[1]
 	for item in scoring_vector:
 		domain= item[0]
 		score= item[1]
