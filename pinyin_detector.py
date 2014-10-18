@@ -328,12 +328,10 @@ if __name__ == "__main__":
 	unfiltered_scoring_vector= sorted(unfiltered_scoring_vector, key=operator.itemgetter(1), reverse=True)
 
 	f= open('filtered_domains.txt', 'w+')
-	f1 = open("unfiltered_domains.txt", "w+")
 	normalized_score=0
 	count=0
 	print "(Domain, Score)"
 	f.write("Domain, Score"+"\n")
-	f1.write("Domain, Score"+"\n")
 	for item in unfiltered_scoring_vector:
 		domain = item[0]
 		score= item[1]
@@ -345,7 +343,7 @@ if __name__ == "__main__":
 		if score < pd.score_threshold:
 			continue
 		normalized_score = score/total_probability
-		# print (domain, normalized_score)
+		print (domain, normalized_score)
 		f.write(str(domain)+", "+str(normalized_score)+"\n")
 		count+=1
 
