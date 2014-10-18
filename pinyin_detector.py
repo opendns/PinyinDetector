@@ -295,7 +295,6 @@ if __name__ == "__main__":
 		total_probability+=total_domain_score
 
 	scoring_vector= sorted(scoring_vector, key=operator.itemgetter(1), reverse=True)
-	unfiltered_scoring_vector= sorted(unfiltered_scoring_vector, key=operator.itemgetter(1), reverse=True)
 
 	f= open('output_pinyin_domains.txt', 'w+')
 	normalized_score=0
