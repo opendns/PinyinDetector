@@ -335,8 +335,6 @@ if __name__ == "__main__":
 	for item in unfiltered_scoring_vector:
 		domain = item[0]
 		score= item[1]
-		f1.write(str(domain)+", "+str(score)+", ("+ str(langid.classify(domain)[0])+", "+str(langid.classify(domain)[1])+")\n")
-
 	for item in scoring_vector:
 		domain= item[0]
 		score= item[1]
