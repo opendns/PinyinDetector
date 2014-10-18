@@ -280,35 +280,6 @@ if __name__ == "__main__":
 	total_d= pd.create_probability_vectors()
 	scoring_vector=[]
 	total_probability=0.0
-	unfiltered_scoring_vector=[]
-	# for domain, prob in total_d.items():
-
-	# 	total_domain_score=0
-	# 	ip = pd.domain_ip_d[domain]
-	# 	cc = pd.getCC(ip)
-	# 	cc_weight= pd.getCC_weight(cc)
-	# 	lang_weight= pd.get_lang_weight(domain)
-	# 	punycode_weight= pd.get_punycode_weight(domain)
-	# 	total_domain_score= prob+ lang_weight + cc_weight + punycode_weight
-	# 	scoring_vector.append((domain, total_domain_score))
-	# 	total_probability+=total_domain_score
-
-	# scoring_vector= sorted(scoring_vector, key=operator.itemgetter(1), reverse=True)
-
-	# f= open('filtered_domains.txt', 'w+')
-	# normalized_score=0
-	# count=0
-	# print "(Domain, Score)"
-	# f.write("Domain, Score"+"\n")
-	# for item in scoring_vector:
-	# 	domain= item[0]
-	# 	score= item[1]
-	# 	if score < pd.score_threshold:
-	# 		continue
-	# 	normalized_score = score/total_probability
-	# 	print (domain, normalized_score)
-	# 	f.write(str(domain)+", "+str(normalized_score)+"\n")
-	# 	count+=1
 
 	for domain, prob in total_d.items():
 
@@ -321,13 +292,12 @@ if __name__ == "__main__":
 		giveaway_weight= pd.check_giveaway_words(domain)
 		total_domain_score= prob+ lang_weight + cc_weight + punycode_weight + giveaway_weight
 		scoring_vector.append((domain, total_domain_score))
-		unfiltered_scoring_vector.append((domain, prob))
 		total_probability+=total_domain_score
 
 	scoring_vector= sorted(scoring_vector, key=operator.itemgetter(1), reverse=True)
 	unfiltered_scoring_vector= sorted(unfiltered_scoring_vector, key=operator.itemgetter(1), reverse=True)
 
-	f= open('filtered_domains.txt', 'w+')
+	f= open('output_pinyin_domains.txt', 'w+')
 	normalized_score=0
 	count=0
 	print "(Domain, Score)"
